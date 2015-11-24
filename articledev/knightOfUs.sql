@@ -52,7 +52,7 @@ CREATE TABLE k_article
 	article_like number DEFAULT 0 NOT NULL,
 	article_dislike number DEFAULT 0 NOT NULL,
 	img_url varchar2(200) UNIQUE,
-	user_id varchar2(20) NOT NULL,
+	user_id varchar2(50) NOT NULL,
 	PRIMARY KEY (no)
 );
 
@@ -66,14 +66,14 @@ CREATE TABLE k_comment
 	comment_dislike varchar2(100) DEFAULT '0' NOT NULL,
 	comment_img_url varchar2(200) UNIQUE,
 	no number NOT NULL,
-	user_id varchar2(20) NOT NULL,
+	user_id varchar2(50) NOT NULL,
 	PRIMARY KEY (comment_no)
 );
 
 
 CREATE TABLE k_user
 (
-	user_id varchar2(20) NOT NULL,
+	user_id varchar2(50) NOT NULL,
 	user_nick varchar2(20) NOT NULL UNIQUE,
 	user_pw varchar2(128) NOT NULL,
 	user_level number DEFAULT 1 NOT NULL,
@@ -118,3 +118,8 @@ insert into CATEGORY_INFO(cno, cname) values(2, 'economics');
 insert into CATEGORY_INFO(cno, cname) values(3, 'society');
 insert into CATEGORY_INFO(cno, cname) values(4, 'culture');
 insert into CATEGORY_INFO(cno, cname) values(5, 'IT');
+
+insert into K_USER(user_id, user_nick, user_pw, user_level, like_dislike, article_count, prep)
+values('realtiger0982@gmail.com', 'DH', '1234','예비언론인', 45, 5);
+
+
