@@ -24,6 +24,28 @@
     values(seq_no.nextval, #{sno}, #{cno}, #{title}, #{content}, #{img_url}, #{user_id})
     </insert>
     
+    <select id="getArticle" parameterType="no" resultType="ArticleVO">
+   INSERT into k_article(no, sno, cno, title, content, img_url, user_id)
+   FROM k_article
+   WHERE no=#{no}
+    </select>
     
+    <update id="updateCount" parameterType="no">
+    UPDATE k_article
+    SET count = count + 1 
+    WHERE no=#{no}
+    </update>
+    
+    <update id="updateArticle" parameterType="no">
+    UPDATE k_article
+    SET sno=#{sno}, cno=#{cno}, title=#{title}, content=#{content}, img_url=#{img_url}
+    WHERE no=#{no}
+    </update>
+    
+    
+    <delete id="deleteArticle" parameterType="ArticleVO" >
+    DELETE FROM k_article
+	WHERE  no=#{no}
+    </delete>
     
 </mapper>

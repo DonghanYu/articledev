@@ -31,4 +31,36 @@ public class ArticleServiceImpl implements ArticleService{
 		
 	}
 
+	@Override
+	public void deleteArticle(ArticleVO articleVO) throws Exception {
+		 articleDAO.deleteArticle(articleVO);
+		
+		
+	}
+	 @Override
+	   public void updateArticle(ArticleVO articleVO) throws Exception {
+	      int result = articleDAO.updateArticle(articleVO);
+	      
+	   }
+
+	   @Override
+	   public ArticleVO getArticle(int no) throws Exception {
+	      int result = articleDAO.updateCount(no);
+
+	      /*      
+	       if (result != 1) {
+	            throw new RuntimeException(no + "번 글이 존재하지 않습니다.");
+	        }
+	        */
+	      return articleDAO.getArticle(no);
+	   }
+	   
+	   @Override
+	   public ArticleVO getArticleWithoutCount(int no) throws Exception {
+
+	      return articleDAO.getArticle(no);
+	   }
+	
+	
+
 }

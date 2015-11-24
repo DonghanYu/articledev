@@ -10,4 +10,12 @@ public interface ArticleService {
 
 	void insertArticle(ArticleVO articleVO) throws Exception;
 
+	void deleteArticle(ArticleVO articleVO) throws Exception;
+
+	ArticleVO getArticleWithoutCount(int no) throws Exception;
+
+	void updateArticle(ArticleVO articleVO) throws Exception;
+
+	ArticleVO getArticle(int no) throws Exception;
+
 }
