@@ -155,7 +155,11 @@ public class ArticleController {
    }
    
    @RequestMapping(value="delete", method=RequestMethod.POST)
-   public ModelAndView delete(ArticleVO articleVO){
+   public ModelAndView delete(
+		   ArticleVO articleVO,
+		   HttpSession session){
+	   String user_id = (String)session.getAttribute("user_id");
+	   articleVO.setUser_id(user_id);
 	   try{
 	   articleService.deleteArticle(articleVO);
 	   return new ModelAndView("redirect:list");
@@ -172,11 +176,6 @@ public class ArticleController {
    }
    
 }
-
-
-
-
-
 
 
 
