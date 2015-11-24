@@ -120,6 +120,6 @@ insert into CATEGORY_INFO(cno, cname) values(4, 'culture');
 insert into CATEGORY_INFO(cno, cname) values(5, 'IT');
 
 insert into K_USER(user_id, user_nick, user_pw, user_level, like_dislike, article_count, prep)
-values('realtiger0982@gmail.com', 'DH', '1234','예비언론인', 45, 5);
+values('realtiger0982@gmail.com', 'DH', '1234', 1, 45, 5, '예비');
 
 
