@@ -3,6 +3,7 @@
 
 DROP TABLE article_section_info CASCADE CONSTRAINTS;
 DROP TABLE category_info CASCADE CONSTRAINTS;
+DROP TABLE user_level_info CASCADE CONSTRAINTS;
 DROP TABLE k_comment CASCADE CONSTRAINTS;
 DROP TABLE k_article CASCADE CONSTRAINTS;
 DROP TABLE k_user CASCADE CONSTRAINTS;
@@ -45,6 +46,7 @@ CREATE TABLE k_article
 	no number NOT NULL,
 	sno number NOT NULL,
 	cno number NOT NULL,
+	lno number DEFAULT 1 NOT NULL,
 	title varchar2(100) NOT NULL,
 	content varchar2(4000) NOT NULL,
 	regdate date DEFAULT sysdate NOT NULL,
@@ -84,6 +86,14 @@ CREATE TABLE k_user
 );
 
 
+CREATE TABLE user_level_info
+(
+	lno number NOT NULL,
+	lname varchar2(100) NOT NULL,
+	PRIMARY KEY (lno)
+);
+
+
 
 /* Create Foreign Keys */
 
@@ -108,10 +118,17 @@ select * from K_USER;
 select * from K_ARTICLE;
 select * from K_COMMENT;
 select * from CATEGORY_INFO;
-select * from ARTICLE_SECTION_INFO; 
+select * from ARTICLE_SECTION_INFO;
+select * from USER_LEVEL_INFO;
 
 insert into  ARTICLE_SECTION_INFO(sno, sname) values(1, 'opinion');
 insert into  ARTICLE_SECTION_INFO(sno, sname) values(2, 'news');
+
+insert into  USER_LEVEL_INFO(lno, lname) values(1, '예비언론인');
+insert into  USER_LEVEL_INFO(lno, lname) values(2, '평기자');
+insert into  USER_LEVEL_INFO(lno, lname) values(3, '주필'); 
+insert into  USER_LEVEL_INFO(lno, lname) values(4, '논설위원');
+insert into  USER_LEVEL_INFO(lno, lname) values(5, '편집장');
 
 insert into CATEGORY_INFO(cno, cname) values(1, 'politics');
 insert into CATEGORY_INFO(cno, cname) values(2, 'economics');
@@ -121,5 +138,4 @@ insert into CATEGORY_INFO(cno, cname) values(5, 'IT');
 
 insert into K_USER(user_id, user_nick, user_pw, user_level, like_dislike, article_count, prep)
 values('realtiger0982@gmail.com', 'DH', '1234', 1, 45, 5, '예비');
-
 
