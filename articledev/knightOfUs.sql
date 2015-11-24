@@ -104,5 +104,17 @@ ALTER TABLE k_comment
 	REFERENCES k_user (user_id)
 ;
 
+select * from K_USER;
+select * from K_ARTICLE;
+select * from K_COMMENT;
+select * from CATEGORY_INFO;
+select * from ARTICLE_SECTION_INFO; 
 
+insert into  ARTICLE_SECTION_INFO(sno, sname) values(1, 'opinion');
+insert into  ARTICLE_SECTION_INFO(sno, sname) values(2, 'news');
 
+insert into CATEGORY_INFO(cno, cname) values(1, 'politics');
+insert into CATEGORY_INFO(cno, cname) values(2, 'economics');
+insert into CATEGORY_INFO(cno, cname) values(3, 'society');
+insert into CATEGORY_INFO(cno, cname) values(4, 'culture');
+insert into CATEGORY_INFO(cno, cname) values(5, 'IT');
