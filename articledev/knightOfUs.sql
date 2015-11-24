@@ -138,4 +138,18 @@ insert into CATEGORY_INFO(cno, cname) values(5, 'IT');
 
 insert into K_USER(user_id, user_nick, user_pw, user_level, like_dislike, article_count, prep)
 values('realtiger0982@gmail.com', 'DH', '1234', 1, 45, 5, '예비');
+insert into K_USER(user_id, user_nick, user_pw, user_level, like_dislike, article_count, prep)
+values('reallion0982@Lmail.com', 'RUU', '1234', 2, 32, 2, '예비');
+
+select user_id, user_nick, user_level, like_dislike, article_count
+from K_USER
+where user_id='realtiger0982@gmail.com' and user_pw ='1234';
+
+update K_USER
+set user_nick='DDR', user_pw='12345'
+where user_id = 'reallion0982@kmail.com' and user_pw = '1234';
+
+delete from K_USER
+where user_id = 'reallion0982@Lmail.com' and user_pw = '1234';
+
 

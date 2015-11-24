@@ -5,22 +5,29 @@
 <mapper namespace="net.dami.dev.board.UserDAO">
 	<!-- Create -->
 	<insert id="registUser" parameterType="UserVO">
-
+		insert into
+			K_USER(user_id, user_nick, user_pw, user_level, like_dislike, article_count, prep)
+		values
+			(#{user_id}, #{user_nick}, #{user_pw}, #{user_level}, #{like_dislike}, #{article_count}, #{prep});
 	</insert>
 	
 	<!-- Read -->	
 	<select id="getUser" parameterType="UserVO" resultType="UserVO">
-
+		select user_id, user_nick, user_level, like_dislike, article_count
+		from K_USER
+		where user_id = #{user_id} and user_pw = #{user_pw}
 	</select>
 	
 	<!-- Update -->
 	<update id="updateUser" parameterType="UserVO">
-	
+		update K_USER
+		set user_nick = #{user_nick}, user_pw = #{user_pw}
+		where user_id = #{user_id} and user_pw = #{user_pw};	
 	</update>
 	
 	<!-- Delete -->
 	<delete id="deleteUser" parameterType="UserVO">
-	
-	
+		delete from K_USER
+		where user_id = #{user_id} and user_pw = #{user_pw};
 	</delete>
 </mapper>
