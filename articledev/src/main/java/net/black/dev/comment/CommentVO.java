@@ -1,14 +1,8 @@
 package net.black.dev.comment;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.io.Writer;
-import java.util.LinkedHashMap;
 
-import org.json.simple.JSONStreamAware;
-import org.json.simple.JSONValue;
-
-public class CommentVO implements Serializable, JSONStreamAware {
+public class CommentVO implements Serializable {
 	private long comment_no;
 	private String comment_content;
 	private String comment_regdate;
@@ -106,14 +100,4 @@ public class CommentVO implements Serializable, JSONStreamAware {
 				+ ", img_url=" + img_url + ", no=" + no + ", user_id=" + user_id + "]";
 	}
 
-
-	@Override
-	public void writeJSONString(Writer out) throws IOException {
-		 LinkedHashMap obj = new LinkedHashMap();                 
-		 obj.put("user_id", user_id);                 
-		 obj.put("comment_no", comment_no);                 
-		 obj.put("comment_content", comment_content);
-		 obj.put("comment_regdate", comment_regdate);
-		 JSONValue.writeJSONString(obj, out); 
-	}
 }
