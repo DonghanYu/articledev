@@ -4,5 +4,31 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="net.sf.log4jdbc.DriverSpy" />	
+		<property name="url" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:xe" />	
+		<property name="username" value="dev" />	
+		<property name="password" value="dev" />	
+	</bean>
+	
+	<!-- spring mybatis bridge -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="typeAliasesPackage" value="net.black.dev.article" />
+	</bean>
+	
+	<!-- 1. mybatis mapper -->
+	<bean id="userDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="net.black.dev.article.UserDAO" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<!-- 2. mybatis mapper -->
+	<bean id="articleDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="net.black.dev.article.ArticleDAO" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 		
 </beans>

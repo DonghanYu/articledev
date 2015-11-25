@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/article/{sno}/{cno}/{pg}")
+@RequestMapping("/article/{sno}/{cno}")
 public class ArticleController {
    private static final Logger logger = LoggerFactory.getLogger(ArticleController.class);
    
@@ -68,7 +68,7 @@ public class ArticleController {
 		
 		e.printStackTrace();
 		ModelAndView mav = new ModelAndView("result");
-		mav.addObject("msg", "입력 실패");
+		mav.addObject("msg", "�엯�젰 �떎�뙣");
 		mav.addObject("url", "javascript:history.back();");
 		return mav;
 	}
@@ -79,7 +79,7 @@ public class ArticleController {
       
       try {
          if (no == 0) {
-            throw new RuntimeException("잘못된 접근 입니다.");
+            throw new RuntimeException("�옒紐삳맂 �젒洹� �엯�땲�떎.");
          }
          ArticleVO articleVO = articleService.getArticle(no);
          ModelAndView mav = new ModelAndView("/{no}");
@@ -167,7 +167,7 @@ public class ArticleController {
 		   e.printStackTrace();
 		   ModelAndView mav= new ModelAndView();
 		   mav.setViewName("result");
-		   mav.addObject("msg","글 삭제 실패 하였습니다.");
+		   mav.addObject("msg","湲� �궘�젣 �떎�뙣 �븯���뒿�땲�떎.");
 		   mav.addObject("url","javascript:history.back()");
 		   return mav;
 		   
