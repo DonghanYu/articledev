@@ -7,7 +7,7 @@ public class UserVO implements Serializable{
 	private String user_id;
 	private String user_nick;
 	private String user_pw;
-	private String user_level;
+	private int user_level;
 	private int like_dislike;
 	private int article_count;
 	private String prep;
@@ -30,10 +30,10 @@ public class UserVO implements Serializable{
 	public void setUser_pw(String user_pw) {
 		this.user_pw = user_pw;
 	}
-	public String getUser_level() {
+	public int getUser_level() {
 		return user_level;
 	}
-	public void setUser_level(String user_level) {
+	public void setUser_level(int user_level) {
 		this.user_level = user_level;
 	}
 	public int getLike_dislike() {

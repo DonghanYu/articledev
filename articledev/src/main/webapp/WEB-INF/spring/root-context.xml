@@ -13,19 +13,31 @@
 		<property name="password" value="dev" />	
 	</bean>
 	
-	<!-- spring mybatis bridge -->
+
+
+	<!-- userDAO spring mybatis bridge -->
+	<bean id="sqlSessionFactoryUser"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="typeAliasesPackage" value="net.black.dev.user" />
+	</bean>
+	
+	<!-- userDAO mybatis mapper -->
+	<bean id="userDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="net.black.dev.user.UserDAO" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryUser" />
+	</bean>
+	
+	
+	
+	
+	<!-- articleDAO spring mybatis bridge -->
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="typeAliasesPackage" value="net.black.dev.article" />
 	</bean>
-	
-	<!-- 1. mybatis mapper -->
-	<bean id="userDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="net.black.dev.article.UserDAO" />
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>
-	<!-- 2. mybatis mapper -->
+	<!-- articleDAO mybatis mapper -->
 	<bean id="articleDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="net.black.dev.article.ArticleDAO" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />

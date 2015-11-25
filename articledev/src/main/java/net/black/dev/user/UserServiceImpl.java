@@ -1,12 +1,14 @@
 package net.black.dev.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
+	@Qualifier("userDAO")
 	private UserDAO userDAO;
 	//Read
 	@Override
@@ -24,12 +26,8 @@ public class UserServiceImpl implements UserService {
 	}
 	//update
 	@Override
-	public UserVO updateUser(UserVO userVO) throws Exception {
-		UserVO userInfo = userDAO.updateUser(userVO);
-		if (userInfo == null) {
-			throw new RuntimeException("/?/");
-		}
-		return userInfo;
+	public void updateUser(UserVO userVO) throws Exception {
+		userDAO.updateUser(userVO);
 	}
 	//delete
 	@Override

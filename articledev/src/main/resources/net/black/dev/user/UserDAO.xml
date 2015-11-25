@@ -2,7 +2,7 @@
 <!DOCTYPE mapper      
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"      
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="net.dami.dev.board.UserDAO">
+<mapper namespace="net.black.dev.user.UserDAO">
 	<!-- Create -->
 	<insert id="registUser" parameterType="UserVO">
 		insert into
@@ -19,7 +19,7 @@
 	</select>
 	
 	<!-- Update -->
-	<update id="updateUser" parameterType="UserVO">
+	<update id="updateUser" parameterType="UserVO" >
 		update K_USER
 		set user_nick = #{user_nick}, user_pw = #{user_pw}
 		where user_id = #{user_id} and user_pw = #{user_pw};	
