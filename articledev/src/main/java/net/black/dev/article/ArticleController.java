@@ -28,21 +28,23 @@ public class ArticleController {
    public String list(
          @PathVariable int sno,
          @PathVariable int cno,
-         @PathVariable int pg,
          Model model) throws Exception {
-      
          PageNation p = new PageNation();
          p.setSno(sno);
          p.setCno(cno);
-         p.setPg(pg);
+
          
-         ArticleInfoVO articleInfo = articleService.getArticleInfo(sno, cno);
+         SectionInfoVO sectionInfo = articleService.getSectionInfo(sno); //section
+         CategoryInfoVO categoryInfo = articleService.getCategoryInfo(cno); //category
          List<ArticleVO> list = articleService.getArticleList(p);
       
          model.addAttribute("list", list);
          model.addAttribute("sno", sno);
          model.addAttribute("cno", cno);
-         model.addAttribute("articleInfo", articleInfo);
+         
+         
+         model.addAttribute("sectionInfo", sectionInfo);
+         model.addAttribute("categoryInfo", categoryInfo);
          return "article/list";
                   
    }
@@ -68,7 +70,7 @@ public class ArticleController {
 		
 		e.printStackTrace();
 		ModelAndView mav = new ModelAndView("result");
-		mav.addObject("msg", "�엯�젰 �떎�뙣");
+		mav.addObject("msg", "입력 실패");
 		mav.addObject("url", "javascript:history.back();");
 		return mav;
 	}
@@ -79,7 +81,7 @@ public class ArticleController {
       
       try {
          if (no == 0) {
-            throw new RuntimeException("�옒紐삳맂 �젒洹� �엯�땲�떎.");
+            throw new RuntimeException("잘못된 접근 입니다.");
          }
          ArticleVO articleVO = articleService.getArticle(no);
          ModelAndView mav = new ModelAndView("/{no}");
@@ -167,7 +169,7 @@ public class ArticleController {
 		   e.printStackTrace();
 		   ModelAndView mav= new ModelAndView();
 		   mav.setViewName("result");
-		   mav.addObject("msg","湲� �궘�젣 �떎�뙣 �븯���뒿�땲�떎.");
+		   mav.addObject("msg","글 삭제 실패 하였습니다.");
 		   mav.addObject("url","javascript:history.back()");
 		   return mav;
 		   
@@ -176,11 +178,6 @@ public class ArticleController {
    }
    
 }
-
-
-
-
-
 
 
 

@@ -4,12 +4,16 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.black.dev.article.ArticleDAO">
     
-    <select id="getArticleInfo" parameterType="int" resultType="ArticleInfoVO">
-    SELECT sno, sname, cno, cname
-    FROM article_info
-    WHERE sno=#{sno} and cno=#{cno}
+    <select id="getSectionInfo" parameterType="int" resultType="SectionInfoVO">
+    SELECT sno, sname
+    FROM article_section_info
+    WHERE sno=#{sno}
+    </select>
     
-    
+    <select id="getCategoryInfo" parameterType="int" resultType="CategoryInfoVO">
+    SELECT cno, cname
+    FROM category_info
+    WHERE cno=#{cno}
     </select>
     
     <select id="getArticleList" parameterType="PageNation" resultType="ArticleVO">
@@ -25,7 +29,7 @@
     </insert>
     
     <select id="getArticle" parameterType="int" resultType="ArticleVO">
-   INSERT into k_article(no, sno, cno, title, content, img_url, user_id)
+   SELECT into k_article(no, sno, cno, title, content, img_url, user_id)
    FROM k_article
    WHERE no=#{no}
     </select>
