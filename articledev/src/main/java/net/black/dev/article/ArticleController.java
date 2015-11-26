@@ -26,8 +26,10 @@ public class ArticleController {
    
    @RequestMapping(value ="/")
    public String list(
-         @PathVariable int sno,
-         @PathVariable int cno,
+         @PathVariable @RequestParam(name="sno",defaultValue="1") int sno,
+         @PathVariable @RequestParam(name="cno",defaultValue="1") int cno,
+//	        @PathVariable int sno,
+//	         @PathVariable int cno,
          Model model) throws Exception {
          PageNation p = new PageNation();
          p.setSno(sno);
@@ -48,6 +50,8 @@ public class ArticleController {
          return "article/list";
                   
    }
+   
+
    
    @RequestMapping(value="insert", method=RequestMethod.GET)
    public String insert() {
@@ -77,14 +81,14 @@ public class ArticleController {
    }
    
    @RequestMapping(value="view", method=RequestMethod.GET)
-   public ModelAndView view(@RequestParam int no) {
+   public ModelAndView view(@RequestParam(name="no",defaultValue="0") int no) {
       
       try {
          if (no == 0) {
             throw new RuntimeException("잘못된 접근 입니다.");
          }
          ArticleVO articleVO = articleService.getArticle(no);
-         ModelAndView mav = new ModelAndView("/{no}");
+         ModelAndView mav = new ModelAndView("article/view");
          mav.addObject("articleVO", articleVO);
          return mav;
          
@@ -178,7 +182,4 @@ public class ArticleController {
    }
    
 }
-
-
-
 

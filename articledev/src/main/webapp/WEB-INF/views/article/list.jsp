@@ -37,7 +37,20 @@
 	<td>${vo.like}</td>
 </tr>
 </c:forEach>
+
+
 </table>
+
+<c:forEach items="${list}" var="vo" varStatus="vs">
+<tr>
+	<td>${vo.no}</td>
+	<td><a href="${vo.sno}">${vo.sno}</a></td>
+	<td>${vo.cno}</td>
+	<td>${vo.user_id}</td>
+	<td>${vo.count}</td>
+	<td>${vo.like}</td>
+</tr>
+</c:forEach>
 
 <form>
 	<select name="section">

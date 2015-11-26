@@ -13,11 +13,11 @@ public class ArticleServiceImpl implements ArticleService{
 	@Qualifier("articleDAO")
 	private ArticleDAO articleDAO;
 	
-	@Override
-	public ArticleInfoVO getArticleInfo(int sno, int cno) throws Exception {
-		
-		return articleDAO.getArticleInfo(sno, cno);
-	}
+//	@Override
+//	public ArticleInfoVO getArticleInfo(int sno, int cno) throws Exception {
+//		
+//		return articleDAO.getArticleInfo(sno, cno);
+//	}
 
 	@Override
 	public List<ArticleVO> getArticleList(PageNation p) throws Exception {
@@ -60,6 +60,18 @@ public class ArticleServiceImpl implements ArticleService{
 
 	      return articleDAO.getArticle(no);
 	   }
+
+	@Override
+	public SectionInfoVO getSectionInfo(int sno) throws Exception {
+		
+		return articleDAO.getSectionInfo(sno);
+	}
+
+	@Override
+	public CategoryInfoVO getCategoryInfo(int cno) throws Exception {
+		
+		return articleDAO.getCategoryInfo(cno);
+	}
 	
 	
 
