@@ -14,7 +14,7 @@
 	</bean>
 	
 
-
+	<!-- 1 -->
 	<!-- userDAO spring mybatis bridge -->
 	<bean id="sqlSessionFactoryUser"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -28,9 +28,8 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactoryUser" />
 	</bean>
 	
-	
-	
-	
+		
+	<!-- 2 -->
 	<!-- articleDAO spring mybatis bridge -->
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -41,6 +40,20 @@
 	<bean id="articleDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="net.black.dev.article.ArticleDAO" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	
+	<!-- 3 -->
+	<!-- commentDAO spring mybatis bridge -->
+	<bean id="sqlSessionFactoryComment"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="typeAliasesPackage" value="net.black.dev.comment" />
+	</bean>
+	<!-- commentDAO mybatis mapper -->
+	<bean id="commentDAO" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="net.black.dev.comment.CommentDAO" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryComment" />
 	</bean>
 		
 </beans>

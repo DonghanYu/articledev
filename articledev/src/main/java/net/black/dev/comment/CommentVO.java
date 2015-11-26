@@ -3,13 +3,13 @@ package net.black.dev.comment;
 import java.io.Serializable;
 
 public class CommentVO implements Serializable {
-	private long comment_no;
+	private int comment_no;
 	private String comment_content;
 	private String comment_regdate;
 	private int comment_like;
 	private int comment_dislike;
 	private String img_url;
-	private long no;
+	private int no;
 	private String user_id;
 	
 	
@@ -18,7 +18,7 @@ public class CommentVO implements Serializable {
 	}
 
 
-	public void setComment_no(long comment_no) {
+	public void setComment_no(int comment_no) {
 		this.comment_no = comment_no;
 	}
 
@@ -78,7 +78,7 @@ public class CommentVO implements Serializable {
 	}
 
 
-	public void setNo(long no) {
+	public void setNo(int no) {
 		this.no = no;
 	}
 

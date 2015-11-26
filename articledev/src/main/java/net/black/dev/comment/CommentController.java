@@ -16,22 +16,22 @@ public class CommentController {
 
 	@Autowired
 	private CommentService commentService;
+	
 	@RequestMapping(value="/", method=RequestMethod.GET)
-	public void view(@PathVariable long no) {
+	public void view(@PathVariable int no) {
 		logger.info(no + "번 댓글 상세보기");
-		
 	}
 	@RequestMapping(value="/update", method=RequestMethod.GET)
-	public void update(@PathVariable long no) {
+	public void update(@PathVariable int no) {
 		logger.info(no + "번 댓글 수정 폼 출력");
 	}
 	@RequestMapping(value="/update", method=RequestMethod.POST)
-	public void view(@PathVariable long no, @ModelAttribute CommentVO commentVO) {
+	public void view(@PathVariable int no, @ModelAttribute CommentVO commentVO) {
 		logger.info(no + "번 댓글 수정 처리");
 	}
 	
 	@RequestMapping(value="/delete", method=RequestMethod.GET)
-	public void delete(@PathVariable long no) {
+	public void delete(@PathVariable int no) {
 		logger.info(no + "번 댓글 삭제 처리");
 	}
 }

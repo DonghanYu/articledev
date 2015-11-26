@@ -6,7 +6,7 @@ public interface CommentDAO {
 	
 	void updateComment(CommentVO commentVO) throws Exception;
 	
-	String getCommentList(long no)  throws Exception;
+	String getCommentList(int no)  throws Exception;
 	
 	void deleteComment(CommentVO commentVO)  throws Exception;
 	
